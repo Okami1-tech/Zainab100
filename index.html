@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070410">
+<title>For Sarauniya 💜 | A Universe Written in Dua</title>
+
+<style>
+:root {
+  --bg: #070410;
+  --purple: #a855f7;
+  --pink: #ff8bc9;
+  --lavender: #e9d5ff;
+  --white: #fff8ff;
+  --muted: #b5a7c9;
+  --gold: #f5d79b;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--white);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+#universe {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 42%, #28123f 0%, #10091f 38%, #070410 76%);
+}
+
+#stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.aurora {
+  position: absolute;
+  width: 90vw;
+  height: 90vw;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .12;
+  pointer-events: none;
+  animation: aurora 12s ease-in-out infinite alternate;
+}
+
+.aurora.one {
+  background: #9333ea;
+  top: -38%;
+  left: -35%;
+}
+
+.aurora.two {
+  background: #db2777;
+  bottom: -45%;
+  right: -40%;
+  animation-delay: -5s;
+}
+
+@keyframes aurora {
+  from { transform: translate(0,0) scale(1); }
+  to { transform: translate(12%,8%) scale(1.3); }
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 28px 23px calc(28px + env(safe-area-inset-bottom));
+  overflow-y: auto;
+  opacity: 0;
+}
+
+.screen.active {
+  display: flex;
+  animation: appear .9s ease forwards;
+}
+
+@keyframes appear {
+  to { opacity: 1; }
+}
+
+.eyebrow {
+  color: var(--pink);
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1, h2, p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(35px, 9vw, 58px);
+  font-weight: normal;
+  line-height: 1.08;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+h2 {
+  font-size: clamp(29px, 7vw, 42px);
+  font-weight: normal;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 17px;
+}
+
+p {
+  color: #e0d4ec;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.center {
+  text-align: center;
+}
+
+.gradient-text {
+  background: linear-gradient(115deg, #fff, #e9b7ff 40%, #ff9ccc 75%, #fff0c9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.small-note {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #a99ab9;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.primary-btn {
+  border: 1px solid rgba(233,213,255,.45);
+  color: white;
+  background: linear-gradient(135deg, rgba(147,51,234,.35), rgba(219,39,119,.19));
+  border-radius: 999px;
+  padding: 15px 25px;
+  min-width: 190px;
+  margin-top: 22px;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(168,85,247,.12);
+  transition: .25s;
+}
+
+.primary-btn:active {
+  transform: scale(.96);
+}
+
+.ghost-btn {
+  border: 0;
+  background: transparent;
+  color: #bca9d1;
+  padding: 15px;
+  margin-top: 8px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* CELESTIAL OPENING */
+
+#opening {
+  justify-content: flex-start;
+  padding-top: max(45px, env(safe-area-inset-top));
+}
+
+.opening-title {
+  font-size: clamp(30px, 8vw, 47px);
+  margin-bottom: 12px;
+}
+
+.opening-subtitle {
+  max-width: 300px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #c8b8d9;
+  margin-bottom: 0;
+}
+
+.constellation-stage {
+  width: min(90vw, 410px);
+  height: min(94vw, 420px);
+  min-height: 310px;
+  max-height: 420px;
+  position: relative;
+  margin: 12px 0 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.constellation-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  position: absolute;
+  inset: 0;
+}
+
+.constellation-lines {
+  fill: none;
+  stroke: rgba(213,166,255,.65);
+  stroke-width: .8;
+  stroke-dasharray: 5 7;
+  animation: lineFlow 18s linear infinite;
+}
+
+@keyframes lineFlow {
+  to { stroke-dashoffset: -200; }
+}
+
+.constellation-outline {
+  fill: none;
+  stroke: url(#crystalGradient);
+  stroke-width: 1.2;
+  filter: url(#glow);
+}
+
+.constellation-point {
+  fill: #fff4ff;
+  filter: url(#glow);
+  animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .35; }
+  to { opacity: 1; }
+}
+
+.crystal {
+  position: relative;
+  z-index: 2;
+  width: 128px;
+  height: 165px;
+  animation: crystalFloat 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 18px rgba(192,132,252,.45));
+}
+
+@keyframes crystalFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-13px) rotate(2deg); }
+}
+
+.crystal svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.crystal-shape {
+  fill: url(#crystalFill);
+  stroke: rgba(255,226,255,.8);
+  stroke-width: 1.2;
+}
+
+.crystal-facet {
+  fill: none;
+  stroke: rgba(255,231,255,.45);
+  stroke-width: .8;
+}
+
+.crystal-star {
+  position: absolute;
+  color: #fff;
+  text-shadow: 0 0 12px #e9b7ff;
+  animation: twinkle 1.8s infinite alternate;
+}
+
+.crystal-star.s1 { top: 18%; left: 15%; font-size: 17px; }
+.crystal-star.s2 { top: 24%; right: 12%; font-size: 12px; animation-delay: .6s; }
+.crystal-star.s3 { bottom: 20%; left: 18%; font-size: 11px; animation-delay: 1s; }
+.crystal-star.s4 { bottom: 16%; right: 17%; font-size: 19px; animation-delay: .3s; }
+
+.floating-symbol {
+  position: absolute;
+  color: #e9b7ff;
+  opacity: .7;
+  font-size: 19px;
+  animation: drift 7s ease-in-out infinite;
+}
+
+.floating-symbol:nth-of-type(2n) {
+  animation-delay: -3s;
+  color: #ffb4d8;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-20px) rotate(14deg); }
+}
+
+.constellation-name {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #f3ddff;
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(216,180,254,.55);
+}
+
+.awaken-hint {
+  margin-top: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  color: #bba8d1;
+  letter-spacing: 3px;
+  text-align: center;
+  animation: hintPulse 2s infinite;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: .45; }
+  50% { opacity: 1; }
+}
+
+#awakenButton {
+  position: relative;
+  z-index: 5;
+  border: 1px solid rgba(255,225,255,.5);
+  color: white;
+  background: rgba(83,36,113,.3);
+  border-radius: 50%;
+  width: 57px;
+  height: 57px;
+  font-size: 23px;
+  cursor: pointer;
+  box-shadow: 0 0 28px rgba(192,132,252,.35);
+  animation: awakenGlow 2.5s infinite alternate;
+}
+
+@keyframes awakenGlow {
+  from { box-shadow: 0 0 12px rgba(192,132,252,.15); }
+  to { box-shadow: 0 0 32px rgba(192,132,252,.6); }
+}
+
+.opening-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+/* NAME COLLECTION */
+
+.name-card {
+  width: 100%;
+  max-width: 390px;
+  padding: 25px 20px;
+  text-align: center;
+  border: 1px solid rgba(233,213,255,.15);
+  background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(168,85,247,.055));
+  border-radius: 3px 35px 3px 35px;
+  box-shadow: 0 20px 80px rgba(0,0,0,.16);
+}
+
+.name-counter {
+  font-family: Arial, sans-serif;
+  color: #d8b4fe;
+  letter-spacing: 3px;
+  font-size: 10px;
+  margin-bottom: 20px;
+}
+
+#herName {
+  font-size: clamp(28px, 8vw, 41px);
+  line-height: 1.35;
+  color: #ffe6fa;
+  margin-bottom: 14px;
+}
+
+#nameMeaning {
+  font-size: 14px;
+  color: #cbb8dd;
+  line-height: 1.8;
+  min-height: 52px;
+}
+
+.name-decoration {
+  color: var(--pink);
+  letter-spacing: 10px;
+  margin-bottom: 14px;
+}
+
+/* LETTER */
+
+.letter-scroll {
+  width: 100%;
+  max-width: 420px;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 26px 23px;
+  border-left: 1px solid rgba(216,180,254,.5);
+  border-right: 1px solid rgba(216,180,254,.15);
+  background: linear-gradient(90deg, rgba(168,85,247,.045), transparent, rgba(219,39,119,.035));
+}
+
+.letter-scroll p {
+  font-size: 15px;
+}
+
+.signature {
+  margin-top: 24px;
+  font-size: 24px;
+  color: #f0c9ff;
+  line-height: 1.5;
+}
+
+/* MEMORY CARDS */
+
+.memory-stack {
+  width: 100%;
+  max-width: 380px;
+}
+
+.memory {
+  padding: 23px 20px;
+  border-top: 1px solid rgba(216,180,254,.25);
+  margin-bottom: 7px;
+  background: linear-gradient(90deg, rgba(168,85,247,.07), transparent);
+}
+
+.memory-number {
+  font-family: Arial, sans-serif;
+  color: var(--pink);
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.memory h3 {
+  font-size: 22px;
+  font-weight: normal;
+  margin: 0 0 9px;
+  color: #f3dfff;
+}
+
+.memory p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* DUA */
+
+.arabic {
+  direction: rtl;
+  font-size: clamp(23px, 6vw, 30px);
+  line-height: 2;
+  color: #f4ddff;
+  text-align: center;
+}
+
+.transliteration {
+  font-style: italic;
+  color: #d8b4fe;
+  text-align: center;
+  line-height: 1.9;
+  font-size: 15px;
+}
+
+.translation {
+  text-align: center;
+  color: #e0d4ec;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.dua-divider {
+  color: var(--gold);
+  letter-spacing: 8px;
+  text-align: center;
+  margin: 18px 0;
+}
+
+/* FINAL HEART */
+
+.final-heart {
+  font-size: 64px;
+  line-height: 1;
+  display: inline-block;
+  margin: 22px 0;
+  filter: drop-shadow(0 0 24px rgba(244,114,182,.6));
+  animation: heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  10% { transform: scale(1.12); }
+  20% { transform: scale(1); }
+  30% { transform: scale(1.08); }
+}
+
+.final-copy {
+  max-width: 340px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.progress {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #a855f7, #ff8bc9, #f5d79b);
+  transition: width .5s;
+}
+
+.navigation {
+  position: fixed;
+  z-index: 9;
+  bottom: max(13px, env(safe-area-inset-bottom));
+  left: 0;
+  right: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  pointer-events: none;
+}
+
+.navigation.visible {
+  display: flex;
+}
+
+.nav-btn {
+  pointer-events: auto;
+  border: 1px solid rgba(233,213,255,.24);
+  color: #ead7fa;
+  background: rgba(15,8,27,.82);
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-size: 11px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.nav-label {
+  color: #a99ab9;
+  font: 10px Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.sparkle {
+  position: fixed;
+  z-index: 8;
+  pointer-events: none;
+  font-size: 18px;
+  animation: sparkleRise 1.5s ease-out forwards;
+}
+
+@keyframes sparkleRise {
+  0% { opacity: 1; transform: translateY(0) scale(.5) rotate(0); }
+  100% { opacity: 0; transform: translateY(-100px) scale(1.4) rotate(45deg); }
+}
+
+@media (max-height: 700px) {
+  #opening { padding-top: 25px; }
+  .constellation-stage { height: 300px; min-height: 280px; }
+  .crystal { width: 105px; height: 140px; }
+  .opening-title { font-size: 31px; }
+  .eyebrow { margin-bottom: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div id="universe">
+  <canvas id="stars"></canvas>
+  <div class="aurora one"></div>
+  <div class="aurora two"></div>
+
+  <div class="progress" id="progress"></div>
+
+  <!-- OPENING -->
+  <section class="screen active" id="opening">
+    <div class="eyebrow">A little universe, made for you</div>
+
+    <h1 class="opening-title gradient-text">
+      Before you enter<br>my heart…
+    </h1>
+
+    <p class="opening-subtitle">
+      There is something I want you to discover.
+      Not just a message. A little universe with your name written among its stars.
+    </p>
+
+    <div class="constellation-stage" id="constellationStage">
+
+      <svg class="constellation-svg" viewBox="0 0 400 400" aria-hidden="true">
+        <defs>
+          <linearGradient id="crystalGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#fff0ff"/>
+            <stop offset="48%" stop-color="#c084fc"/>
+            <stop offset="100%" stop-color="#ff8bc9"/>
+          </linearGradient>
+
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2.6" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+
+          <radialGradient id="crystalFill">
+            <stop offset="0%" stop-color="#e9d5ff" stop-opacity=".5"/>
+            <stop offset="100%" stop-color="#a855f7" stop-opacity=".06"/>
+          </radialGradient>
+        </defs>
+
+        <g class="constellation-lines">
+          <path d="M200 25 L275 70 L340 130 L310 220 L355 295 L265 350 L200 375 L115 345 L45 285 L78 205 L35 125 L125 70 Z"/>
+          <path d="M200 25 L200 375 M35 125 L340 130 M45 285 L310 220 M125 70 L265 350 M275 70 L115 345"/>
+          <path d="M78 205 L200 25 L310 220 L200 375 L78 205"/>
+          <path d="M35 125 L200 200 L355 295 M340 130 L200 200 L45 285"/>
+          <path d="M125 70 L200 200 L265 350 M275 70 L200 200 L115 345"/>
+        </g>
+
+        <g class="constellation-outline">
+          <path d="M200 62 L270 100 L307 177 L270 265 L200 310 L130 265 L93 177 L130 100 Z"/>
+          <path d="M200 62 L200 310 M130 100 L270 265 M270 100 L130 265"/>
+          <path d="M93 177 L307 177"/>
+        </g>
+
+        <g>
+          <circle class="constellation-point" cx="200" cy="25" r="3"/>
+          <circle class="constellation-point" cx="275" cy="70" r="2.5"/>
+          <circle class="constellation-point" cx="340" cy="130" r="3"/>
+          <circle class="constellation-point" cx="310" cy="220" r="2"/>
+          <circle class="constellation-point" cx="355" cy="295" r="3"/>
+          <circle class="constellation-point" cx="265" cy="350" r="2"/>
+          <circle class="constellation-point" cx="200" cy="375" r="3"/>
+          <circle class="constellation-point" cx="115" cy="345" r="2.5"/>
+          <circle class="constellation-point" cx="45" cy="285" r="3"/>
+          <circle class="constellation-point" cx="78" cy="205" r="2"/>
+          <circle class="constellation-point" cx="35" cy="125" r="3"/>
+          <circle class="constellation-point" cx="125" cy="70" r="2"/>
+          <circle class="constellation-point" cx="200" cy="200" r="3.5"/>
+        </g>
+      </svg>
+
+      <span class="floating-symbol" style="top:12%;left:20%">✧</span>
+      <span class="floating-symbol" style="top:20%;right:18%">♡</span>
+      <span class="floating-symbol" style="bottom:24%;left:12%">✦</span>
+      <span class="floating-symbol" style="bottom:27%;right:12%">✧</span>
+      <span class="floating-symbol" style="top:45%;left:4%">·</span>
+      <span class="floating-symbol" style="top:48%;right:5%">·</span>
+
+      <div class="crystal">
+        <svg viewBox="0 0 140 180" aria-hidden="true">
+          <defs>
+            <linearGradient id="crystalFillLocal" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f5d0fe" stop-opacity=".7"/>
+              <stop offset="50%" stop-color="#a855f7" stop-opacity=".15"/>
+              <stop offset="100%" stop-color="#ec4899" stop-opacity=".45"/>
+            </linearGradient>
+          </defs>
+          <path class="crystal-shape" style="fill:url(#crystalFillLocal)"
+            d="M70 5 L117 42 L132 102 L70 174 L8 102 L23 42 Z"/>
+          <path class="crystal-facet" d="M70 5 L70 174 M23 42 L117 42 M8 102 L132 102 M23 42 L70 102 L117 42 M8 102 L70 102 L132 102 M70 102 L70 5 M70 102 L117 42 M70 102 L23 42 M70 102 L117 145 M70 102 L23 145"/>
+          <path d="M70 5 L117 42 L70 102 L23 42 Z" fill="#f5d0fe" opacity=".1"/>
+          <path d="M70 102 L132 102 L70 174 Z" fill="#ec4899" opacity=".13"/>
+          <path d="M8 102 L70 102 L70 174 Z" fill="#a855f7" opacity=".17"/>
+        </svg>
+      </div>
+
+      <span class="crystal-star s1">✦</span>
+      <span class="crystal-star s2">✧</span>
+      <span class="crystal-star s3">✧</span>
+      <span class="crystal-star s4">✦</span>
+
+      <div class="constellation-name">Sarauniya ♡</div>
+    </div>
+
+    <div class="opening-bottom">
+      <button id="awakenButton" aria-label="Awaken the constellation" onclick="awaken()">✧</button>
+      <div class="awaken-hint">TOUCH THE STAR TO BEGIN</div>
+    </div>
+  </section>
+
+  <!-- INTRODUCTION -->
+  <section class="screen" id="intro">
+    <div class="eyebrow">A message from my heart</div>
+    <h1 class="gradient-text">You are not<br>just a name.</h1>
+
+    <p class="center" style="max-width:340px">
+      You are the person behind so many of my smiles.
+      The one whose happiness matters to me.
+      The one I pray Allah grants ease, protection, and beautiful things.
+    </p>
+
+    <p class="center" style="color:#f0c9ff;font-style:italic">
+      And today, I made you something different.
+    </p>
+
+    <button class="primary-btn" onclick="goTo('names')">Discover your names ✨</button>
+  </section>
+
+  <!-- NAMES -->
+  <section class="screen" id="names">
+    <div class="eyebrow">Twenty-five little ways to say it</div>
+    <h2 class="gradient-text">If my heart could<br>call you anything…</h2>
+
+    <div class="name-card">
+      <div class="name-counter" id="nameCounter">01 / 25</div>
+      <div class="name-decoration">✧ ♡ ✧</div>
+      <div id="herName">My Wife 💜💕</div>
+      <p id="nameMeaning">The woman I hope to build a beautiful life with, insha'Allah.</p>
+    </div>
+
+    <button class="primary-btn" id="nextName" onclick="nextName()">Another name ♡</button>
+    <button class="ghost-btn" onclick="goTo('letter')">Skip to my letter →</button>
+  </section>
+
+  <!-- LETTER -->
+  <section class="screen" id="letter">
+    <div class="eyebrow">Something I want you to know</div>
+    <h2 class="gradient-text">My letter to you.</h2>
+
+    <div class="letter-scroll">
+      <p>My Sarauniya, my Queen, my Hayati… 💜</p>
+
+      <p>
+        Sometimes I wonder how something as ordinary as being course mates
+        could become such a beautiful part of my life. We started with the
+        simplest things—notes, assignments, little conversations—and somehow
+        you became someone I hold so dearly in my heart.
+      </p>
+
+      <p>
+        I still remember asking you for notes because I hadn't copied mine
+        properly. 😂 Who would have thought that such a small thing could
+        become part of a story I would treasure?
+      </p>
+
+      <p>
+        I remember when your bag was stolen and I wanted to help calm you down.
+        I couldn't make everything disappear, but I wanted you to remember
+        that Allah knows best, even when we don't understand what has happened.
+      </p>
+
+      <p>
+        I notice the little things about you. How you encourage me to study,
+        even when STA121 tries to humble me. 😂 How you remind me to eat,
+        rest, and take care of myself. How you believe in me and sometimes
+        motivate me without even realizing how much your words mean.
+      </p>
+
+      <p>
+        I appreciate you more than I always know how to express. I don't want
+        my love to be only sweet words. I want it to show in my patience,
+        my honesty, my effort, my respect, and the way I treat you when life
+        is not easy.
+      </p>
+
+      <p>
+        I cannot promise that every day will be perfect. I am still growing,
+        still learning, still working towards the man I want to become.
+        But I pray that I keep becoming someone who brings you peace rather
+        than confusion, reassurance rather than fear, and kindness rather
+        than unnecessary pain.
+      </p>
+
+      <p>
+        And if Allah wills it for us, I pray that one day we will look back
+        at these little beginnings from a home of our own. A home filled
+        with sakinah, laughter, understanding, mercy, and barakah.
+        A home where we remind each other of Allah and make du'a for one
+        another even when the other person doesn't know.
+      </p>
+
+      <p>
+        I pray for a love that helps us become better people.
+        A love that does not make us forget our Creator, but brings us
+        closer to Him. A love with patience, good character, sincere effort,
+        and the intention to do things the right way.
+      </p>
+
+      <p>
+        You don't have to be perfect for me to appreciate you.
+        You don't have to be strong every single day.
+        You can have difficult days, quiet days, days when you need rest,
+        and days when you need someone to remind you that you matter.
+      </p>
+
+      <p>
+        I hope I always remember to listen to you, to understand you,
+        and to make room for your feelings. I hope we keep learning how
+        to communicate with gentleness, especially when we misunderstand
+        each other.
+      </p>
+
+      <p>
+        And my love, please never forget to take care of yourself.
+        Your health matters. Your peace matters. Your dreams matter.
+        You matter beyond what you do for anyone else.
+      </p>
+
+      <p>
+        If there is one thing I want you to feel when you read this,
+        it is that you are appreciated. Not only on special days.
+        Not only when everything is going well. But in the ordinary
+        moments too.
+      </p>
+
+      <p>
+        May Allah protect the good in you, ease what feels heavy,
+        bless your efforts, grant you beneficial knowledge, and place
+        light in your path. May He grant you happiness that brings
+        you closer to Him and keep you safe from what harms you.
+      </p>
+
+      <p>
+        I don't know every detail of what the future holds.
+        But I know that I want to keep growing, working, praying,
+        and doing my best. And if Allah writes our future together,
+        I pray that we meet that future with grateful hearts.
+      </p>
+
+      <p>
+        Until then, let's keep choosing kindness. Let's keep encouraging
+        each other. Let's keep making du'a. Let's keep building something
+        beautiful with sincerity and patience, one day at a time.
+      </p>
+
+      <p>
+        You are precious to me, Sarauniya. And I hope my actions continue
+        to remind you of that, long after you've finished reading these words.
+      </p>
+
+      <div class="signature">
+        With love and du'a,<br>
+        Muhammad 💜
+      </div>
+    </div>
+
+    <button class="primary-btn" onclick="goTo('memories')">There is more… ✨</button>
+  </section>
+
+  <!-- MEMORIES -->
+  <section class="screen" id="memories">
+    <div class="eyebrow">Little things I keep in my heart</div>
+    <h2 class="gradient-text">Our little universe.</h2>
+
+    <div class="memory-stack">
+      <div class="memory">
+        <div class="memory-number">MEMORY 01</div>
+        <h3>The notes 😂</h3>
+        <p>
+          A course mate, an assignment, and me asking for notes.
+          Such an ordinary beginning, yet one I smile about now.
+        </p>
+      </div>
+
+      <div class="memory">
+        <div class="memory-number">MEMORY 02</div>
+        <h3>The encouragement</h3>
+        <p>
+          You pushing me to study, especially when I need to take my
+          academics seriously. Your encouragement means more than you know.
+        </p>
+      </div>
+
+      <div class="memory">
+        <div class="memory-number">MEMORY 03</div>
+        <h3>The little care</h3>
+        <p>
+          The reminders to eat, rest, and look after myself.
+          Love can show up in the smallest acts of care.
+        </p>
+      </div>
+
+      <div class="memory">
+        <div class="memory-number">MEMORY 04</div>
+        <h3>The future, insha'Allah</h3>
+        <p>
+          A peaceful home, prayers, laughter, mutual understanding,
+          and two people continuing to grow with Allah at the centre.
+        </p>
+      </div>
+    </div>
+
+    <button class="primary-btn" onclick="goTo('dua')">Let me make du'a for you 🤲</button>
+  </section>
+
+  <!-- DUA -->
+  <section class="screen" id="dua">
+    <div class="eyebrow">The most important part</div>
+    <h2 class="gradient-text">A prayer for you.</h2>
+
+    <p class="arabic">
+      اللَّهُمَّ احْفَظْهَا وَبَارِكْ لَهَا وَيَسِّرْ أَمْرَهَا
+    </p>
+
+    <p class="transliteration">
+      Allahumma ihfazha, wa barik laha, wa yassir amraha.
+    </p>
+
+    <p class="translation">
+      O Allah, protect her, bless her, and make her affairs easy.
+    </p>
+
+    <div class="dua-divider">✧ ✦ ✧</div>
+
+    <p class="center" style="max-width:350px">
+      Ya Allah, grant her good health, beneficial knowledge,
+      peace of mind, strength through difficult days, and blessings
+      in everything good she pursues.
+    </p>
+
+    <p class="center" style="max-width:350px">
+      Forgive her shortcomings, protect her from harm, surround her
+      with sincere people, and grant her what is best for her in this
+      life and the Hereafter.
+    </p>
+
+    <p class="center" style="max-width:350px">
+      And if we are good for one another and You have written a future
+      together for us, guide us towards it in a way that pleases You.
+      Put mercy, patience, understanding, and barakah between us.
+    </p>
+
+    <h2 class="gradient-text" style="font-size:36px;margin-top:8px">Ameen ya Rabb. 🤲</h2>
+
+    <button class="primary-btn" onclick="goTo('final')">One last thing, my Queen…</button>
+  </section>
+
+  <!-- FINAL -->
+  <section class="screen" id="final">
+    <div class="eyebrow">If these words could become a gift</div>
+
+    <h1 class="gradient-text">
+      My Mrs<br>Muhammad.
+    </h1>
+
+    <div class="final-heart">💜</div>
+
+    <p class="final-copy">
+      My Wife 💜💕<br>
+      The one Allah has written for me ✨💐<br>
+      My Mrs Muhammad 💜💐👑
+    </p>
+
+    <p class="final-copy">
+      These are hopes I carry in my heart, not a claim to know the unseen.
+      The future belongs to Allah, and I pray for what is best.
+    </p>
+
+    <p class="final-copy">
+      Whatever tomorrow brings, may Allah grant you ease,
+      protect your heart, bless your life, and keep you smiling.
+    </p>
+
+    <p class="center" style="color:#f0c9ff;font-size:19px;margin-top:10px">
+      You are loved. You are appreciated. You are in my du'a.
+    </p>
+
+    <p class="center" style="font-size:21px;color:#f5d79b">
+      Always with sincerity, Muhammad. 💜
+    </p>
+
+    <button class="primary-btn" onclick="celebrate()">Hold this heart ♡</button>
+    <button class="ghost-btn" onclick="restart()">Return to our universe ↺</button>
+  </section>
+
+  <div class="navigation" id="navigation">
+    <button class="nav-btn" id="backBtn" onclick="previousScreen()">← Back</button>
+    <span class="nav-label" id="navLabel">01 / 07</span>
+    <button class="nav-btn" id="nextBtn" onclick="nextScreen()">Continue →</button>
+  </div>
+</div>
+
+<script>
+/* STARFIELD */
+
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+let stars = [];
+let width = 0;
+let height = 0;
+let animationFrame;
+
+function resizeCanvas() {
+  width = canvas.width = window.innerWidth * Math.min(window.devicePixelRatio || 1, 2);
+  height = canvas.height = window.innerHeight * Math.min(window.devicePixelRatio || 1, 2);
+  canvas.style.width = window.innerWidth + "px";
+  canvas.style.height = window.innerHeight + "px";
+
+  ctx.setTransform(
+    Math.min(window.devicePixelRatio || 1, 2), 0,
+    0, Math.min(window.devicePixelRatio || 1, 2), 0, 0
+  );
+
+  stars = Array.from({ length: Math.min(150, Math.floor(window.innerWidth / 3)) }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    r: Math.random() * 1.4 + .2,
+    a: Math.random() * .65 + .15,
+    speed: Math.random() * .008 + .002,
+    phase: Math.random() * Math.PI * 2
+  }));
+}
+
+function drawStars(time = 0) {
+  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+  stars.forEach(star => {
+    const opacity = star.a * (0.6 + 0.4 * Math.sin(time * star.speed + star.phase));
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(245,225,255,${opacity})`;
+    ctx.fill();
+  });
+
+  animationFrame = requestAnimationFrame(drawStars);
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+drawStars();
+
+/* SCREENS */
+
+const screenOrder = [
+  "opening",
+  "intro",
+  "names",
+  "letter",
+  "memories",
+  "dua",
+  "final"
+];
+
+let currentScreen = 0;
+
+function goTo(id) {
+  const index = screenOrder.indexOf(id);
+  if (index === -1) return;
+
+  currentScreen = index;
+
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+
+  const isOpening = id === "opening";
+  const navigation = document.getElementById("navigation");
+
+  navigation.classList.toggle("visible", !isOpening);
+
+  document.getElementById("progress").style.width =
+    (currentScreen / (screenOrder.length - 1) * 100) + "%";
+
+  document.getElementById("navLabel").textContent =
+    String(currentScreen + 1).padStart(2, "0") +
+    " / " +
+    String(screenOrder.length).padStart(2, "0");
+
+  document.getElementById("backBtn").style.visibility =
+    currentScreen === 1 ? "hidden" : "visible";
+
+  document.getElementById("nextBtn").style.display =
+    currentScreen === screenOrder.length - 1 ? "none" : "inline-block";
+
+  if (id === "intro") burstSparkles(15);
+  if (id === "final") burstSparkles(24);
+}
+
+function awaken() {
+  burstSparkles(28);
+
+  const button = document.getElementById("awakenButton");
+  button.style.transform = "scale(1.25)";
+  button.style.opacity = ".3";
+
+  setTimeout(() => {
+    goTo("intro");
+    button.style.transform = "";
+    button.style.opacity = "";
+  }, 450);
+}
+
+function nextScreen() {
+  if (currentScreen < screenOrder.length - 1) {
+    goTo(screenOrder[currentScreen + 1]);
+  }
+}
+
+function previousScreen() {
+  if (currentScreen > 1) {
+    goTo(screenOrder[currentScreen - 1]);
+  }
+}
+
+function restart() {
+  nameIndex = 0;
+  renderName();
+  goTo("opening");
+}
+
+/* 25 NAMES */
+
+const names = [
+  {
+    name: "My Wife 💜💕",
+    meaning: "The woman I hope to build a beautiful life with, insha'Allah."
+  },
+  {
+    name: "The One Allah Has Written for Me ✨💐",
+    meaning: "A hope I place in Allah's hands, trusting His knowledge of what is best."
+  },
+  {
+    name: "My Mrs Muhammad 💜💐👑",
+    meaning: "A beautiful dream of a future built with love, mercy, and barakah."
+  },
+  {
+    name: "My Queen 👑💜",
+    meaning: "Someone I want to honour, respect, appreciate, and treat with kindness."
+  },
+  {
+    name: "My Hayati 💜",
+    meaning: "My life, my darling—a little name carrying so much affection."
+  },
+  {
+    name: "My Darling 🌷",
+    meaning: "The one whose smile can make an ordinary day feel special."
+  },
+  {
+    name: "My World 🌎💜",
+    meaning: "A precious part of my world, without whom I would have a different story."
+  },
+  {
+    name: "My Heart's Peace 🕊️",
+    meaning: "Someone I pray to share gentleness, understanding, and peace with."
+  },
+  {
+    name: "My Favourite Person 💕",
+    meaning: "The person behind many of my smiles and favourite little memories."
+  },
+  {
+    name: "My Princess 👑🌸",
+    meaning: "A reminder that you deserve tenderness, respect, and thoughtful care."
+  },
+  {
+    name: "My Sweetness 🍯💗",
+    meaning: "For the softness and sweetness you bring into my days."
+  },
+  {
+    name: "My Little Star ✨",
+    meaning: "A little light that makes the night sky feel less empty."
+  },
+  {
+    name: "My Precious One 💎",
+    meaning: "Someone I never want to take for granted."
+  },
+  {
+    name: "My Forever Dua 🤲💜",
+    meaning: "Someone I sincerely pray for, asking Allah to grant what is best."
+  },
+  {
+    name: "My Sakinah 🕊️",
+    meaning: "A hope for a future shaped by tranquillity, affection, and mercy."
+  },
+  {
+    name: "My Happiness 🌷",
+    meaning: "A special person who gives me so many reasons to smile."
+  },
+  {
+    name: "My Beautiful Soul 💐",
+    meaning: "For the person you are beyond appearances and beyond words."
+  },
+  {
+    name: "My Moonlight 🌙",
+    meaning: "A gentle light in the quiet moments of my life."
+  },
+  {
+    name: "My Favourite Hello 💜",
+    meaning: "Because some conversations make the whole day feel a little brighter."
+  },
+  {
+    name: "My Safe Conversation 🫶",
+    meaning: "Someone I hope to keep understanding, listening to, and communicating with."
+  },
+  {
+    name: "My Blessing 🌸",
+    meaning: "A person I appreciate and never want to stop being grateful for."
+  },
+  {
+    name: "My Sweet Sarauniya 💕",
+    meaning: "Your name, your personality, and the memories that make you uniquely you."
+  },
+  {
+    name: "My Future Home 🏡💜",
+    meaning: "A dream of laughter, patience, prayer, and a peaceful home, insha'Allah."
+  },
+  {
+    name: "My Favourite Smile 😊",
+    meaning: "Because seeing you happy is something I genuinely love."
+  },
+  {
+    name: "My Queen, My Du'a, My Hope 💜🤲",
+    meaning: "Affection, prayer, and hope—held together with sincerity and trust in Allah."
+  }
+];
+
+let nameIndex = 0;
+
+function renderName() {
+  const item = names[nameIndex];
+
+  document.getElementById("nameCounter").textContent =
+    String(nameIndex + 1).padStart(2, "0") + " / " + names.length;
+
+  const nameElement = document.getElementById("herName");
+  const meaningElement = document.getElementById("nameMeaning");
+
+  nameElement.style.opacity = "0";
+  meaningElement.style.opacity = "0";
+
+  setTimeout(() => {
+    nameElement.textContent = item.name;
+    meaningElement.textContent = item.meaning;
+
+    nameElement.style.transition = "opacity .45s";
+    meaningElement.style.transition = "opacity .45s";
+
+    nameElement.style.opacity = "1";
+    meaningElement.style.opacity = "1";
+
+    document.getElementById("nextName").textContent =
+      nameIndex === names.length - 1 ? "Read my letter ♡" : "Another name ♡";
+  }, 180);
+}
+
+function nextName() {
+  if (nameIndex < names.length - 1) {
+    nameIndex++;
+    renderName();
+    burstSparkles(5);
+  } else {
+    goTo("letter");
+  }
+}
+
+/* SPARKLES */
+
+function burstSparkles(amount = 12) {
+  const symbols = ["✦", "✧", "♡", "✨", "💜", "✷"];
+
+  for (let i = 0; i < amount; i++) {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.top = (35 + Math.random() * 55) + "vh";
+    sparkle.style.animationDelay = Math.random() * .4 + "s";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => sparkle.remove(), 2200);
+  }
+}
+
+/* FINAL CELEBRATION */
+
+let celebrationInterval;
+
+function celebrate() {
+  burstSparkles(40);
+
+  let count = 0;
+  clearInterval(celebrationInterval);
+
+  celebrationInterval = setInterval(() => {
+    burstSparkles(8);
+    count++;
+
+    if (count >= 5) {
+      clearInterval(celebrationInterval);
+    }
+  }, 450);
+
+  const heart = document.querySelector(".final-heart");
+  heart.style.transform = "scale(1.5)";
+
+  setTimeout(() => {
+    heart.style.transform = "";
+  }, 500);
+}
+
+/* SWIPE NAVIGATION */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener("touchstart", event => {
+  if (!event.touches.length) return;
+
+  touchStartX = event.touches[0].clientX;
+  touchStartY = event.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener("touchend", event => {
+  if (!event.changedTouches.length) return;
+
+  const dx = event.changedTouches[0].clientX - touchStartX;
+  const dy = event.changedTouches[0].clientY - touchStartY;
+
+  if (Math.abs(dx) > 90 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+    if (dx < 0 && currentScreen > 0 && currentScreen < screenOrder.length - 1) {
+      nextScreen();
+    } else if (dx > 0 && currentScreen > 1) {
+      previousScreen();
+    }
+  }
+}, { passive: true });
+
+/* KEYBOARD SUPPORT */
+
+document.addEventListener("keydown", event => {
+  if (event.key === "ArrowRight" && currentScreen > 0) nextScreen();
+  if (event.key === "ArrowLeft" && currentScreen > 1) previousScreen();
+});
+
+renderName();
+</script>
+</body>
+</html>
